@@ -3,7 +3,7 @@
 #include "Responder.h"
 
 char *buf = NULL;
-SIZE_T BUFSIZE = 0x8000;
+const int MSGBUFSIZE = 0x8000;
 
 int HandleTCPCli(SOCKET sc)
 {
@@ -11,14 +11,14 @@ int HandleTCPCli(SOCKET sc)
 	int recvlen = 0, sentlen = 0, msglen = 0, responseLen = 0;
 	char* response = NULL;
 	do {
-		if (!(buf = (char*)CoTaskMemAlloc(BUFSIZE)))
+		if (!(buf = (char*)CoTaskMemAlloc(MSGBUFSIZE)))
 		{
 			err = GetLastError();
 			fprintf(stderr, "CoTaskMemAlloc() failed, err = %d @ %s,%d\n",
 				err, __FILE__, __LINE__);
 		}
 		do {
-			recvlen = recv(sc, buf, BUFSIZE, 0);
+			recvlen = recv(sc, buf, MSGBUFSIZE, 0);
 			if (recvlen == 0)
 			{
 				fprintf(stdout, "sc was closed by client.\n");

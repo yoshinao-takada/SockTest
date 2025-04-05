@@ -22,8 +22,7 @@ int Responder_Respond(const char* req, int reqlen, char** res, int* reslen)
         offset += _snprintf_s(buf, bufsize, bufsize, FMT[0], cnt++);
         memcpy(buf + offset, req, reqlen);
         offset += reqlen;
-        offset += _snprintf_s(buf + offset, bufsize - offset, bufsize - offset,
-            FMT[1]);
+        offset += _snprintf_s(buf + offset, bufsize - offset, bufsize - offset, FMT[1]);
         *reslen = offset;
         *res = buf;
     } while (0);

@@ -12,7 +12,7 @@ const char* FMT = "Client string iteration %d";
 char* buf = NULL;
 SIZE_T bufsize = 0;
 
-int init_buf()
+int ini_buf()
 {
 	int err = ERROR_SUCCESS;
 	do {
