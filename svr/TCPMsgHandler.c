@@ -24,7 +24,7 @@ int HandleTCPCli(SOCKET sc)
 				fprintf(stdout, "sc was closed by client.\n");
 				break;
 			}
-			else
+			else if (recvlen < 0)
 			{
 				err = WSAGetLastError();
 				fprintf(stderr, "recv() failed, err = %d @ %s,%d\n",
